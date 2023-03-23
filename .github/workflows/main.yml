@@ -5,7 +5,7 @@ name: buildLibrary
 on:
   push:
     branches:
-      - dev
+      - master
 
 # jobs 也就是任务的意思
 jobs:
@@ -25,6 +25,9 @@ jobs:
 
       - name: Install
         run: npm install # 安装依赖
+
+      - name: Build
+        run: npm run build:lib #重新打包
 
       - name: Publish to NPM  # 推送到 NPM 上
         run: |
