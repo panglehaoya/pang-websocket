@@ -1,6 +1,5 @@
 import Vue from "vue";
 import App from "./App.vue";
-import Storage from "responsive-storage";
 
 Vue.config.productionTip = false;
 
