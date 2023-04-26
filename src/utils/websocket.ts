@@ -6,6 +6,14 @@ interface IReConnectFn {
   (times: number, event: CloseEvent): Promise<any>;
 }
 
+interface IWSOptions {
+  reConnectFn?: IReConnectFn;
+  reLinkTimes?: number;
+  heartbeatClientText?: string;
+  heartbeatServerText?: string;
+  heartbeatInterval?: number;
+}
+
 class WebsocketClass {
   private wsInstance: WebSocket | undefined;
   private sendEvent = "";
@@ -22,21 +30,25 @@ class WebsocketClass {
   public reConnectFn?: IReConnectFn;
 
   constructor(
-    url: string,
-    reConnectFn?: IReConnectFn,
-    reLinkTimes = 5,
-    heartbeatClientText = "client",
-    heartbeatServerText = "server",
-    heartbeatInterval = 5000
+    url,
+    options: IWSOptions = {
+      reLinkTimes: 5,
+      heartbeatServerText: "server",
+      heartbeatClientText: "client",
+      heartbeatInterval: 5000,
+    }
   ) {
     this.url = url;
-    this.reLinkTimes = reLinkTimes;
-    this.heartbeatServerText = heartbeatServerText;
-    this.heartbeatClientText = heartbeatClientText;
+
+    this.reLinkTimes = (options && options.reLinkTimes) || 5;
+    this.heartbeatServerText =
+      (options && options.heartbeatServerText) || "server";
+    this.heartbeatClientText =
+      (options && options.heartbeatClientText) || "client";
     this.isActiveClose = false;
     this.reConnectTimes = 0;
-    this.heartbeatInterval = heartbeatInterval;
-    this.reConnectFn = reConnectFn;
+    this.heartbeatInterval = (options && options.heartbeatInterval) || 5000;
+    this.reConnectFn = options && options.reConnectFn;
   }
 
   init() {

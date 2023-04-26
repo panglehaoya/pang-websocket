@@ -39,8 +39,17 @@ class WSEvent {
     }
   }
 
+  once(type: EventType, handler: Handler) {
+    const temp = (...args) => {
+      handler.apply(this, args as any);
+      this.off(type, temp);
+    };
+
+    this.on(type, temp);
+  }
+
   clear() {
-    this.all = new Map();
+    this.all.clear();
   }
 }
 

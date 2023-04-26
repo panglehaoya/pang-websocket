@@ -1,8 +1,8 @@
 const Koa = require("koa");
 const Router = require("koa-router");
-const websockify = require("koa-websocket");
+const KoaWebsocket = require("koa-websocket");
 
-const app = websockify(new Koa());
+const app = KoaWebsocket(new Koa());
 const router = new Router();
 
 app.ws.use((ctx, next) => {

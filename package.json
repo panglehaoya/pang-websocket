@@ -30,8 +30,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "dev:server": "nodemon ./src/demo-server/index.js",
+    "test:unit": "vue-cli-service test:unit --watchAll --coverage",
+    "koa:server": "nodemon ./src/demo-server/index.js",
     "build:lib": "tsup",
     "prepare": "husky install",
     "lint": "vue-cli-service lint",
@@ -60,6 +60,7 @@
     "eslint-plugin-vue": "^8.0.3",
     "husky": "^8.0.3",
     "jest": "^27.0.5",
+    "jest-websocket-mock": "^2.4.0",
     "koa": "^2.14.1",
     "koa-router": "^12.0.0",
     "koa-websocket": "^7.0.0",
