@@ -7,10 +7,15 @@ interface IReConnectFn {
 }
 
 interface IWSOptions {
+  // 重连回调函数
   reConnectFn?: IReConnectFn;
+  // 重连次数
   reLinkTimes?: number;
+  // 心跳客户端内容
   heartbeatClientText?: string;
+  // 心跳服务端内容
   heartbeatServerText?: string;
+  // 心跳检测间隔
   heartbeatInterval?: number;
 }
 
