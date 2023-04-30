@@ -1,6 +1,6 @@
 {
   "name": "pang-websocket",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "对websocket的封装",
   "files": [
     "dist"
